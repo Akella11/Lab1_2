@@ -1,1 +1,87 @@
+class Node:
 
+    def __init__(self, code, price, quantity=0):
+        self.left = None
+        self.right = None
+        self.code = code
+        self.price = price
+        self.quantity = quantity
+
+
+class Binary_Tree:
+
+    def __init__(self):
+        self.root = None
+
+    def add(self, node):
+        if self.root == None:
+            self.root = node
+        else:
+            current = self.root
+            ind = True
+            while ind:
+                if node.code < current.code:
+                    if current.left is None:
+                        current.left = node
+                        ind = False
+                    else:
+                        current = current.left
+
+                else:
+                    if current.right is None:
+                        current.right = node
+                        ind = False
+                    else:
+                        current = current.right
+
+    def find(self, code):
+        current = self.root
+        while current.code != code:
+            if code < current.code:
+                current = current.left
+            else:
+                current = current.right
+
+        return current
+
+    def sum(self):
+        queue = [self.root]
+        sum = 0
+
+        while len(queue):
+            current = queue.pop()
+            if current.left:
+                queue.append(current.left)
+            elif current.right:
+                queue.append(current.right)
+            sum += current.price * current.quantity
+
+        return sum
+
+
+tree = Binary_Tree()
+
+prod1 = Node(7, 4)
+prod2 = Node(14, 3)
+prod3 = Node(211, 2)
+prod4 = Node(15, 4)
+prod5 = Node(8, 51)
+
+tree.add(prod1)
+tree.add(prod2)
+tree.add(prod3)
+tree.add(prod4)
+tree.add(prod5)
+
+input = input()
+
+b = 0
+quan = 0
+
+while input:
+    b = int(input[0:input.index(' ')])
+    quan = int(input[input.index(' '): len(input)])
+    tree.find(b).quantity = quan
+    input = input()
+
+print(tree.sum())
