@@ -1,0 +1,21 @@
+class Rectangle():
+
+    def setter(self, length, width):
+        self.length = length
+        self.width = width
+
+    def getter(self):
+        print("Length is " + str(self.length))
+        print("Width is " + str(self.width))
+
+    def Perimeter(self):
+        return 2 * (self.length + self.width)
+
+    def Area(self):
+        return self.length * self.width
+
+
+my_rectangle = Rectangle
+my_rectangle.setter(Rectangle, 6, 7)
+my_rectangle.getter(Rectangle)
+print(my_rectangle.Area(Rectangle))
