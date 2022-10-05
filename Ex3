@@ -1,0 +1,27 @@
+class Product:
+
+    def __init__(self, price, description, dimentions):
+        self.price = price
+        self.description = description
+        self.dimentions = dimentions
+
+
+class Customer:
+
+    def __init__(self, surname, name, patronymic, mobile_phone):
+        self.surname = surname
+        self.name = name
+        self.patronymic = patronymic
+        self.mobile_phone = mobile_phone
+
+
+class Order(Product, Customer):
+
+    def print_value(self):
+        print(self.price)
+
+
+myproduct = Product(1000, 'vaze', '1 metre high')
+mycustomer = Customer('Ivanov', 'Ivan', 'Ivan', '09556575741')
+myorder = Order(1000, 'vaze', '1 metre high')
+myorder.print_value()
