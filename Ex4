@@ -1,0 +1,26 @@
+class filetext:
+
+    def char_counter(self):
+        file = open('lions.txt')
+        data1 = file.read()
+        print('The number of characters in file is ')
+        print(len(data1))
+        file.close()
+
+    def word_counter(self):
+        with open('lions.txt') as file:
+            print('The number of words in file')
+            print(sum(word.count(' ') for word in iter(lambda: file.read(), '')))
+        file.close()
+
+    def sentence_counter(self):
+        with open('lions.txt') as file:
+            print('The number of words in file')
+            print(sum(sentence.count('\n') for sentence in iter(lambda: file.read(), '')))
+        file.close()
+
+
+mytext = filetext
+mytext.char_counter(filetext)
+mytext.word_counter(filetext)
+mytext.sentence_counter(filetext)
