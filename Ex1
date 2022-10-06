@@ -1,6 +1,6 @@
 class Rectangle:
 
-    def setter(self, length=1.0, width=1.0):
+    def setter(self, length = 1, width = 1):
         if length > 0 or length < 20:
             self.length = length
         else:
