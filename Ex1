@@ -4,11 +4,11 @@ class Rectangle:
         if length > 0 or length < 20:
             self.length = length
         else:
-            print('Error: Lenght must be larger than 0 and less than 20')
+            raise Exception('Error: Lenght must be larger than 0 and less than 20')
         if width > 0 or width < 20:
             self.width = width
         else:
-            print('Error: Lenght must be larger than 0 and less than 20')
+            raise Exception('Error: Lenght must be larger than 0 and less than 20')
 
     def getter(self):
         print("Length is " + str(self.length))
