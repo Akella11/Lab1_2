@@ -1,1 +1,33 @@
+import math
+
+
+class Rational:
+
+    def __init__(self, a, b):
+        if not isinstance(a, int):
+            raise Exception("Error: Numerator must be integer")
+        elif not isinstance(b, int):
+            raise Exception("Error: Denominator must be integer")
+        elif b == 0:
+            raise Exception("Error: Denominator can not be 0")
+        self.a = a
+        self.b = b
+
+    def reduce_form(self):
+        tmp = math.gcd(self.a, self.b)
+        self.a = self.a // tmp
+        self.b = self.b // tmp
+
+    def __str__(self):
+        return 'The reduced form of fraction is ' + str(self.a) + '/' + str(self.b)
+
+    def print_rational_number(self):
+        result = self.a / self.b
+        print('The rational result of fraction a/b is ' + str(result))
+
+
+fraction = Rational(10, 100)
+fraction.reduce_form()
+print(fraction)
+fraction.print_rational_number()
 
