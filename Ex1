@@ -1,1 +1,26 @@
+class Rectangle:
 
+    def setter(self, length=1.0, width=1.0):
+        if length > 0 or length < 20:
+            self.length = length
+        else:
+            print('Error: Lenght must be larger than 0 and less than 20')
+        if width > 0 or width < 20:
+            self.width = width
+        else:
+            print('Error: Lenght must be larger than 0 and less than 20')
+
+    def getter(self):
+        print("Length is " + str(self.length))
+        print("Width is " + str(self.width))
+
+    def Perimeter(self):
+        return 2 * (self.length + self.width)
+
+    def Area(self):
+        return self.length * self.width
+
+my_rectangle = Rectangle
+my_rectangle.setter(Rectangle, 6, 7)
+my_rectangle.getter(Rectangle)
+print(my_rectangle.Area(Rectangle))
