@@ -1,1 +1,65 @@
+class Student:
 
+    def __init__(self, name, surname, recordbook, grades):
+        self.name = name
+        self.surname = surname
+        self.recordbook = recordbook
+        self.grades = grades
+
+    def getAverage(self):
+        sum = 0
+        i = 0
+        for grade in self.grades:
+            i += 1
+            sum += grade
+        return sum / i
+
+
+class Group:
+
+    def __init__(self, students, max_students):
+        self.__students__ = students
+        self.max_students = max_students
+        self.__number_of_students__ = 0
+
+    def add_student(self, student):
+        if not isinstance(student, Student):
+            raise Exception("Error: This is not a student")
+        elif student in self.__students__:
+            raise Exception("Error: This student is already in group")
+        elif self.__number_of_students__ >= self.max_students:
+            raise Exception("Error: The group has maximum students")
+        else:
+            self.__students__.append(student)
+            self.__number_of_students__ += 1
+
+    def best_students(self):
+        list = []
+
+        for i in range(0, 5):
+            b = 0
+            stud = self.__students__[0]
+            for j in range(0, len(self.__students__)):
+                if self.__students__[j].getAverage() > b:
+                    b = self.__students__[j].getAverage()
+                    if self.__students__[j] not in list:
+                        stud = self.__students__[j]
+            list.append(stud)
+
+        for i in list:
+            print(i.name)
+
+
+stud1 = Student("name1", "surname1", "record1", [1, 1, 1, 1, 1, 1])
+stud2 = Student("name2", "surname2", "record2", [2, 2, 2, 2, 2, 2])
+stud3 = Student("name3", "surname3", "record3", [3, 3, 3, 3, 3, 3])
+stud4 = Student("name4", "surname4", "record4", [4, 4, 4, 4, 4, 4])
+stud5 = Student("name5", "surname5", "record5", [5, 5, 5, 5, 5, 5])
+stud6 = Student("name6", "surname6", "record6", [6, 6, 6, 6, 6, 6])
+stud7 = Student("name7", "surname7", "record7", [7, 7, 7, 7, 7, 7])
+
+stud = (stud1, stud2, stud3, stud4, stud5, stud6, stud7)
+
+group = Group(stud, 20)
+
+group.best_students()
