@@ -26,7 +26,22 @@ class Order(Product, Customer):
 
     def calculate_value(self):
         result = 0
-        for prod in self.products:
-            result += prod.price
+        for i in self.products:
+            result += i.price
         return result
 
+    def add_product(self, product):
+        self.products.append(product)
+
+    def del_product(self, product):
+        self.products.remove(product)
+
+    def count_prod(self):
+        list = {}
+        for i in self.products:
+            list[i] = self.products.count(i)
+        return list
+
+    def print_order(self):
+        list = self.count_prod()
+        return f'{self.customer}\n{list}\nTotal score is {self.calculate_value()}'
