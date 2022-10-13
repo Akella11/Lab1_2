@@ -17,17 +17,12 @@ class Rational:
         tmp = math.gcd(self.a, self.b)
         self.a = self.a // tmp
         self.b = self.b // tmp
-
-    def __str__(self):
-        return 'The reduced form of fraction is ' + str(self.a) + '/' + str(self.b)
+        return f'The reduced form of fraction is {self.a}/{self.b}'
 
     def print_rational_number(self):
-        result = self.a / self.b
-        print('The rational result of fraction a/b is ' + str(result))
+        return f'The rational result of fraction a/b is {(self.a / self.b)}'
 
 
 fraction = Rational(10, 100)
-fraction.reduce_form()
-print(fraction)
-fraction.print_rational_number()
-
+print(fraction.reduce_form())
+print(fraction.print_rational_number())
