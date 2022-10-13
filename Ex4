@@ -1,24 +1,31 @@
 class filetext:
 
+    def __init__(self, file):
+        self.file = open(file)
+
     def char_counter(self):
-        file = open('text.txt')
-        data = file.read()
-        print(len(data))
-        file.close()
+        self.file.seek(0)
+        chars = 0
+        for i in self.file:
+            chars += len(i)
+        return f'The number of characters is {chars}'
 
     def word_counter(self):
-        with open('text.txt') as file:
-            print(sum(word.count(' ') for word in iter(lambda: file.read(), '')))
-        file.close()
+        self.file.seek(0)
+        words = 1
+        for i in self.file:
+            words += i.count(' ')
+        return f'The number of words is {words}'
 
     def sentence_counter(self):
-        with open('text.txt') as file:
-            print(sum(sentence.count('\n') for sentence in iter(lambda: file.read(), '')))
-        file.close()
+        self.file.seek(0)
+        sentences = 0
+        for i in self.file:
+            sentences += i.count('\n')
+        return f'The number of sentences is {sentences}'
 
 
-mytext = filetext
-mytext.char_counter(filetext)
-mytext.word_counter(filetext)
-mytext.sentence_counter(filetext)
-
+mytext = filetext('text.txt')
+print(mytext.char_counter())
+print(mytext.word_counter())
+print(mytext.sentence_counter())
