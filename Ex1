@@ -10,9 +10,8 @@ class Rectangle:
         else:
             raise Exception('Error: Lenght must be larger than 0 and less than 20')
 
-    def getter(self):
-        print("Length is " + str(self.length))
-        print("Width is " + str(self.width))
+    def __str__(self):
+        return "Length is " + str(self.length) + "\nWidth is " + str(self.width)
 
     def Perimeter(self):
         return 2 * (self.length + self.width)
@@ -22,5 +21,5 @@ class Rectangle:
 
 
 my_rectangle = Rectangle(6, 7)
-my_rectangle.getter()
+print(my_rectangle)
 print(my_rectangle.Area())
